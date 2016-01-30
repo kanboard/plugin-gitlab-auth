@@ -61,6 +61,8 @@ Your name and email are automatically updated from your Gitlab Account if define
 1. The easiest way is to copy and paste the Gitlab OAuth2 credentials in the form **Settings > Integrations > Gitlab Authentication**.
 2. Or add the credentials in your custom config file
 
+![Gitlab Auth Settings](https://cloud.githubusercontent.com/assets/323546/12696079/90da18f4-c72e-11e5-856c-eda54e53b274.png)
+
 If you use the second method, use these parameters in your `config.php`:
 
 ```php

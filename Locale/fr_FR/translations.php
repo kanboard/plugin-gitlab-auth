@@ -7,5 +7,6 @@ return array(
     'Gitlab Account' => 'Compte Gitlab',
     'Gitlab Authentication' => 'Authentification Gitlab',
     'Help on Gitlab authentication' => 'Aide sur l\'authentification Gitlab',
+    'Leave blank to use the default URL.' => 'Laissez vide pour utiliser l\'URL par défaut.',
 );
 

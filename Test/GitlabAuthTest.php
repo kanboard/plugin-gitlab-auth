@@ -13,6 +13,61 @@ class GitlabAuthTest extends Base
         $this->assertEquals('Gitlab', $provider->getName());
     }
 
+    public function testGetClientId()
+    {
+        $provider = new GitlabAuthProvider($this->container);
+        $this->assertEmpty($provider->getClientId());
+
+        $this->assertTrue($this->container['config']->save(array('gitlab_client_id' => 'my_id')));
+        $this->container['memoryCache']->flush();
+
+        $this->assertEquals('my_id', $provider->getClientId());
+    }
+
+    public function testGetClientSecret()
+    {
+        $provider = new GitlabAuthProvider($this->container);
+        $this->assertEmpty($provider->getClientSecret());
+
+        $this->assertTrue($this->container['config']->save(array('gitlab_client_secret' => 'secret')));
+        $this->container['memoryCache']->flush();
+
+        $this->assertEquals('secret', $provider->getClientSecret());
+    }
+
+    public function testGetOAuthAuthorizeUrl()
+    {
+        $provider = new GitlabAuthProvider($this->container);
+        $this->assertEquals('https://gitlab.com/oauth/authorize', $provider->getOAuthAuthorizeUrl());
+
+        $this->assertTrue($this->container['config']->save(array('gitlab_authorize_url' => 'my auth url')));
+        $this->container['memoryCache']->flush();
+
+        $this->assertEquals('my auth url', $provider->getOAuthAuthorizeUrl());
+    }
+
+    public function testGetOAuthTokenUrl()
+    {
+        $provider = new GitlabAuthProvider($this->container);
+        $this->assertEquals('https://gitlab.com/oauth/token', $provider->getOAuthTokenUrl());
+
+        $this->assertTrue($this->container['config']->save(array('gitlab_token_url' => 'my token url')));
+        $this->container['memoryCache']->flush();
+
+        $this->assertEquals('my token url', $provider->getOAuthTokenUrl());
+    }
+
+    public function testGetApiUrl()
+    {
+        $provider = new GitlabAuthProvider($this->container);
+        $this->assertEquals('https://gitlab.com/api/v3/', $provider->getApiUrl());
+
+        $this->assertTrue($this->container['config']->save(array('gitlab_api_url' => 'my api url')));
+        $this->container['memoryCache']->flush();
+
+        $this->assertEquals('my api url', $provider->getApiUrl());
+    }
+
     public function testAuthenticationSuccessful()
     {
         $profile = array(
