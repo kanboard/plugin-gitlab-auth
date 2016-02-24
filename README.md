@@ -15,7 +15,8 @@ Requirements
 ------------
 
 - Account on [Gitlab.com](https://gitlab.com) or you own self-hosted Gitlab instance
-- Have Kanboard registered as application in Gitlab
+- Have Kanboard registered as application in Gitlab (Settings > Applications)
+- Kanboard application URL is defined properly
 
 Installation
 ------------
@@ -77,16 +78,11 @@ define('GITLAB_CLIENT_SECRET', 'YOUR_APPLICATION_SECRET');
 
 Change these default values if you use a self-hosted instance of Gitlab:
 
-```php
-// Gitlab oauth2 authorize url
-define('GITLAB_OAUTH_AUTHORIZE_URL', 'https://gitlab.com/oauth/authorize');
-
-// Gitlab oauth2 token url
-define('GITLAB_OAUTH_TOKEN_URL', 'https://gitlab.com/oauth/token');
-
-// Gitlab API url endpoint (don't forget the slash at the end)
-define('GITLAB_API_URL', 'https://gitlab.com/api/v3/');
-```
+1. Define your custom Kanboard URL in **Settings > Application settings > Application URL**
+2. Define the Gitlab custom URL in **Settings > Integrations > Gitlab Authentication**:
+    - Gitlab Authorize URL: `http://YOUR_GITLAB_HOSTNAME:CUSTOM_PORT/oauth/authorize` (example: `http://192.168.99.100:8080/oauth/authorize`)
+    - Gitlab Token URL: `http://YOUR_GITLAB_HOSTNAME:CUSTOM_PORT/oauth/token`
+    - Gitlab API URL: `http://YOUR_GITLAB_HOSTNAME:CUSTOM_PORT/api/v3/` (don't forget the trailing slash)
 
 ### Notes
 
