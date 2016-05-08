@@ -20,7 +20,7 @@
     <?= $this->form->label(t('Gitlab API URL'), 'gitlab_api_url') ?>
     <?= $this->form->text('gitlab_api_url', $values) ?>
 
-    <p class="form-help"><a href="https://github.com/kanboard/plugin-gitlab-auth/blob/master/README.md"><?= t('Help on Gitlab authentication') ?></a></p>
+    <p class="form-help"><a href="https://kanboard.net/plugin/gitlab-auth"><?= t('Help on Gitlab authentication') ?></a></p>
 
     <div class="form-actions">
         <input type="submit" value="<?= t('Save') ?>" class="btn btn-blue"/>

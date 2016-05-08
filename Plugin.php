@@ -11,10 +11,6 @@ class Plugin extends Base
 {
     public function initialize()
     {
-        $this->on('app.bootstrap', function ($container) {
-            Translator::load($container['config']->getCurrentLanguage(), __DIR__.'/Locale');
-        });
-
         $this->authenticationManager->register(new GitlabAuthProvider($this->container));
         $this->applicationAccessMap->add('OAuth', 'handler', Role::APP_PUBLIC);
 
@@ -25,6 +21,11 @@ class Plugin extends Base
         $this->template->hook->attach('template:user:external', 'GitlabAuth:user/external');
         $this->template->hook->attach('template:user:authentication:form', 'GitlabAuth:user/authentication');
         $this->template->hook->attach('template:user:create-remote:form', 'GitlabAuth:user/create_remote');
+    }
+
+    public function onStartup()
+    {
+        Translator::load($this->language->getCurrentLanguage(), __DIR__.'/Locale');
     }
 
     public function getPluginName()
@@ -44,7 +45,7 @@ class Plugin extends Base
 
     public function getPluginVersion()
     {
-        return '1.0.0';
+        return '1.0.1';
     }
 
     public function getPluginHomepage()
