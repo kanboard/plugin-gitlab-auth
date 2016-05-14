@@ -1,4 +1,4 @@
-<h3><img src="<?= $this->url->dir() ?>plugins/GitlabAuth/gitlab-icon.png"/>&nbsp;<?= t('Gitlab Authentication') ?></h3>
+<h3><i class="fa fa-gitlab fa-fw" aria-hidden="true"></i><?= t('Gitlab Authentication') ?></h3>
 <div class="listing">
 
     <?= $this->form->label(t('Gitlab OAuth callback URL'), 'gitlab_oauth_url') ?>

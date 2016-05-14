@@ -1,4 +1,4 @@
-<h3><img src="<?= $this->url->dir() ?>plugins/GitlabAuth/gitlab-icon.png"/>&nbsp;<?= t('Gitlab Account') ?></h3>
+<h3><i class="fa fa-gitlab fa-fw" aria-hidden="true"></i><?= t('Gitlab Account') ?></h3>
 
 <p class="listing">
 <?php if ($this->user->isCurrentUser($user['id'])): ?>
