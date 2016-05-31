@@ -14,6 +14,7 @@ Author
 Requirements
 ------------
 
+- Kanboard >= 1.0.29
 - Account on [Gitlab.com](https://gitlab.com) or you own self-hosted Gitlab instance
 - Have Kanboard registered as application in Gitlab (Settings > Applications)
 - Kanboard application URL is defined properly
@@ -21,12 +22,13 @@ Requirements
 Installation
 ------------
 
-- Decompress the archive in the `plugins` folder
+You have the choice between 3 methods:
 
-or
+1. Install the plugin from the Kanboard plugin manager in one click
+2. Download the zip file and decompress everything under the directory `plugins/GitlabAuth`
+3. Clone this repository into the folder `plugins/GitlabAuth`
 
-- Create a folder **plugins/GitlabAuth**
-- Copy all files under this directory
+Note: Plugin folder is case-sensitive.
 
 Documentation
 -------------
