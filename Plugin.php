@@ -12,9 +12,9 @@ class Plugin extends Base
     public function initialize()
     {
         $this->authenticationManager->register(new GitlabAuthProvider($this->container));
-        $this->applicationAccessMap->add('OAuth', 'handler', Role::APP_PUBLIC);
+        $this->applicationAccessMap->add('OAuthController', 'handler', Role::APP_PUBLIC);
 
-        $this->route->addRoute('/oauth/gitlab', 'OAuth', 'handler', 'GitlabAuth');
+        $this->route->addRoute('/oauth/gitlab', 'OAuthController', 'handler', 'GitlabAuth');
 
         $this->template->hook->attach('template:auth:login-form:after', 'GitlabAuth:auth/login');
         $this->template->hook->attach('template:config:integrations', 'GitlabAuth:config/integration');
@@ -25,7 +25,7 @@ class Plugin extends Base
 
     public function onStartup()
     {
-        Translator::load($this->language->getCurrentLanguage(), __DIR__.'/Locale');
+        Translator::load($this->languageModel->getCurrentLanguage(), __DIR__.'/Locale');
     }
 
     public function getPluginName()
@@ -45,7 +45,7 @@ class Plugin extends Base
 
     public function getPluginVersion()
     {
-        return '1.0.1';
+        return '1.0.2';
     }
 
     public function getPluginHomepage()

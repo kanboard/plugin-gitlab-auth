@@ -2,7 +2,7 @@
 <div class="listing">
 
     <?= $this->form->label(t('Gitlab OAuth callback URL'), 'gitlab_oauth_url') ?>
-    <input type="text" class="auto-select" readonly="readonly" value="<?= $this->url->href('OAuth', 'handler', array('plugin' => 'GitlabAuth'), false, '', true) ?>"/>
+    <input type="text" class="auto-select" readonly="readonly" value="<?= $this->url->href('OAuthController', 'handler', array('plugin' => 'GitlabAuth'), false, '', true) ?>"/>
 
     <?= $this->form->label(t('Gitlab Client Id'), 'gitlab_client_id') ?>
     <?= $this->form->text('gitlab_client_id', $values) ?>

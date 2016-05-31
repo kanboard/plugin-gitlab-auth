@@ -3,7 +3,7 @@
 require_once 'tests/units/Base.php';
 
 use Kanboard\Plugin\GitlabAuth\Auth\GitlabAuthProvider;
-use Kanboard\Model\User;
+use Kanboard\Model\UserModel;
 
 class GitlabAuthTest extends Base
 {
@@ -18,7 +18,7 @@ class GitlabAuthTest extends Base
         $provider = new GitlabAuthProvider($this->container);
         $this->assertEmpty($provider->getClientId());
 
-        $this->assertTrue($this->container['config']->save(array('gitlab_client_id' => 'my_id')));
+        $this->assertTrue($this->container['configModel']->save(array('gitlab_client_id' => 'my_id')));
         $this->container['memoryCache']->flush();
 
         $this->assertEquals('my_id', $provider->getClientId());
@@ -29,7 +29,7 @@ class GitlabAuthTest extends Base
         $provider = new GitlabAuthProvider($this->container);
         $this->assertEmpty($provider->getClientSecret());
 
-        $this->assertTrue($this->container['config']->save(array('gitlab_client_secret' => 'secret')));
+        $this->assertTrue($this->container['configModel']->save(array('gitlab_client_secret' => 'secret')));
         $this->container['memoryCache']->flush();
 
         $this->assertEquals('secret', $provider->getClientSecret());
@@ -40,7 +40,7 @@ class GitlabAuthTest extends Base
         $provider = new GitlabAuthProvider($this->container);
         $this->assertEquals('https://gitlab.com/oauth/authorize', $provider->getOAuthAuthorizeUrl());
 
-        $this->assertTrue($this->container['config']->save(array('gitlab_authorize_url' => 'my auth url')));
+        $this->assertTrue($this->container['configModel']->save(array('gitlab_authorize_url' => 'my auth url')));
         $this->container['memoryCache']->flush();
 
         $this->assertEquals('my auth url', $provider->getOAuthAuthorizeUrl());
@@ -51,7 +51,7 @@ class GitlabAuthTest extends Base
         $provider = new GitlabAuthProvider($this->container);
         $this->assertEquals('https://gitlab.com/oauth/token', $provider->getOAuthTokenUrl());
 
-        $this->assertTrue($this->container['config']->save(array('gitlab_token_url' => 'my token url')));
+        $this->assertTrue($this->container['configModel']->save(array('gitlab_token_url' => 'my token url')));
         $this->container['memoryCache']->flush();
 
         $this->assertEquals('my token url', $provider->getOAuthTokenUrl());
@@ -62,7 +62,7 @@ class GitlabAuthTest extends Base
         $provider = new GitlabAuthProvider($this->container);
         $this->assertEquals('https://gitlab.com/api/v3/', $provider->getApiUrl());
 
-        $this->assertTrue($this->container['config']->save(array('gitlab_api_url' => 'my api url')));
+        $this->assertTrue($this->container['configModel']->save(array('gitlab_api_url' => 'my api url')));
         $this->container['memoryCache']->flush();
 
         $this->assertEquals('my api url', $provider->getApiUrl());
@@ -132,7 +132,7 @@ class GitlabAuthTest extends Base
 
     public function testUnlink()
     {
-        $userModel = new User($this->container);
+        $userModel = new UserModel($this->container);
         $provider = new GitlabAuthProvider($this->container);
 
         $this->assertEquals(2, $userModel->create(array('username' => 'test', 'gitlab_id' => '1234')));

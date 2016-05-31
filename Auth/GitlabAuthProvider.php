@@ -72,7 +72,7 @@ class GitlabAuthProvider extends Base implements OAuthAuthenticationProviderInte
      *
      * @access public
      * @param  string  $code
-     * @return GitlabAuth
+     * @return $this
      */
     public function setCode($code)
     {
@@ -103,7 +103,7 @@ class GitlabAuthProvider extends Base implements OAuthAuthenticationProviderInte
             $this->service = $this->oauth->createService(
                 $this->getClientId(),
                 $this->getClientSecret(),
-                $this->helper->url->to('OAuth', 'handler', array('plugin' => 'GitlabAuth'), '', true),
+                $this->helper->url->to('OAuthController', 'handler', array('plugin' => 'GitlabAuth'), '', true),
                 $this->getOAuthAuthorizeUrl(),
                 $this->getOAuthTokenUrl(),
                 array()
@@ -138,7 +138,7 @@ class GitlabAuthProvider extends Base implements OAuthAuthenticationProviderInte
      */
     public function unlink($userId)
     {
-        return $this->user->update(array('id' => $userId, 'gitlab_id' => ''));
+        return $this->userModel->update(array('id' => $userId, 'gitlab_id' => ''));
     }
 
     /**
@@ -153,7 +153,7 @@ class GitlabAuthProvider extends Base implements OAuthAuthenticationProviderInte
             return GITLAB_CLIENT_ID;
         }
 
-        return $this->config->get('gitlab_client_id');
+        return $this->configModel->get('gitlab_client_id');
     }
 
     /**
@@ -168,7 +168,7 @@ class GitlabAuthProvider extends Base implements OAuthAuthenticationProviderInte
             return GITLAB_CLIENT_SECRET;
         }
 
-        return $this->config->get('gitlab_client_secret');
+        return $this->configModel->get('gitlab_client_secret');
     }
 
     /**
@@ -183,7 +183,7 @@ class GitlabAuthProvider extends Base implements OAuthAuthenticationProviderInte
             return GITLAB_OAUTH_AUTHORIZE_URL;
         }
 
-        return $this->config->get('gitlab_authorize_url', 'https://gitlab.com/oauth/authorize');
+        return $this->configModel->get('gitlab_authorize_url', 'https://gitlab.com/oauth/authorize');
     }
 
     /**
@@ -198,7 +198,7 @@ class GitlabAuthProvider extends Base implements OAuthAuthenticationProviderInte
             return GITLAB_OAUTH_TOKEN_URL;
         }
 
-        return $this->config->get('gitlab_token_url', 'https://gitlab.com/oauth/token');
+        return $this->configModel->get('gitlab_token_url', 'https://gitlab.com/oauth/token');
     }
 
     /**
@@ -213,6 +213,6 @@ class GitlabAuthProvider extends Base implements OAuthAuthenticationProviderInte
             return GITLAB_API_URL;
         }
 
-        return $this->config->get('gitlab_api_url', 'https://gitlab.com/api/v3/');
+        return $this->configModel->get('gitlab_api_url', 'https://gitlab.com/api/v3/');
     }
 }
