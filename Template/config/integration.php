@@ -19,7 +19,9 @@
 
     <?= $this->form->label(t('Gitlab API URL'), 'gitlab_api_url') ?>
     <?= $this->form->text('gitlab_api_url', $values) ?>
-
+    <?= $this->form->hidden('gitlab_account_creation', array('gitlab_account_creation' => 0)) ?>
+    <?= $this->form->checkbox('gitlab_account_creation', t('Allow Account Creation'), 1, isset($values['gitlab_account_creation']) && $values['gitlab_account_creation'] == 1) ?>
+    
     <p class="form-help"><a href="https://kanboard.net/plugin/gitlab-auth"><?= t('Help on Gitlab authentication') ?></a></p>
 
     <div class="form-actions">

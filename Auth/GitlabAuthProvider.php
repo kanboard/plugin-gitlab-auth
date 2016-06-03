@@ -60,7 +60,7 @@ class GitlabAuthProvider extends Base implements OAuthAuthenticationProviderInte
         $profile = $this->getProfile();
 
         if (! empty($profile)) {
-            $this->userInfo = new GitlabUserProvider($profile);
+            $this->userInfo = new GitlabUserProvider($profile, $this->isAccountCreationAllowed());
             return true;
         }
 
@@ -214,5 +214,19 @@ class GitlabAuthProvider extends Base implements OAuthAuthenticationProviderInte
         }
 
         return $this->configModel->get('gitlab_api_url', 'https://gitlab.com/api/v3/');
+    }
+     /**
+     * Return true if the account creation is allowed according to the settings
+     *
+     * @access public
+     * @return bool
+     */
+    public function isAccountCreationAllowed()
+    {
+        if ($this->configModel->get('gitlab_account_creation', 0) == 1) {
+            return true;
+        }
+
+        return false;
     }
 }
