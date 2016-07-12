@@ -60,7 +60,7 @@ class GitlabAuthProvider extends Base implements OAuthAuthenticationProviderInte
         $profile = $this->getProfile();
 
         if (! empty($profile)) {
-            $this->userInfo = new GitlabUserProvider($profile);
+            $this->userInfo = new GitlabUserProvider($profile, $this->isAccountCreationAllowed($profile));
             return true;
         }
 
@@ -214,5 +214,48 @@ class GitlabAuthProvider extends Base implements OAuthAuthenticationProviderInte
         }
 
         return $this->configModel->get('gitlab_api_url', 'https://gitlab.com/api/v3/');
+    }
+
+    /**
+     * Return true if the account creation is allowed according to the settings
+     *
+     * @access public
+     * @param array $profile
+     * @return bool
+     */
+    public function isAccountCreationAllowed(array $profile)
+    {
+        if ($this->configModel->get('gitlab_account_creation', 0) == 1) {
+            $domains = $this->configModel->get('gitlab_email_domains');
+
+            if (! empty($domains)) {
+                return $this->validateDomainRestriction($profile, $domains);
+            }
+
+            return true;
+        }
+
+        return false;
+    }
+
+    /**
+     * Validate domain restriction
+     *
+     * @access private
+     * @param  array  $profile
+     * @param  string $domains
+     * @return bool
+     */
+    public function validateDomainRestriction(array $profile, $domains)
+    {
+        foreach (explode(',', $domains) as $domain) {
+            $domain = trim($domain);
+
+            if (strpos($profile['email'], $domain) > 0) {
+                return true;
+            }
+        }
+
+        return false;
     }
 }

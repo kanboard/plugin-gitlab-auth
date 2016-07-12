@@ -5,7 +5,7 @@ require_once 'tests/units/Base.php';
 use Kanboard\Plugin\GitlabAuth\Auth\GitlabAuthProvider;
 use Kanboard\Model\UserModel;
 
-class GitlabAuthTest extends Base
+class GitlabAuthProviderTest extends Base
 {
     public function testGetName()
     {
@@ -140,5 +140,33 @@ class GitlabAuthTest extends Base
 
         $this->assertTrue($provider->unlink(2));
         $this->assertEmpty($userModel->getByExternalId('gitlab_id', 1234));
+    }
+
+    public function testIsAccountCreationAllowed()
+    {
+        $provider = new GitlabAuthProvider($this->container);
+        $this->assertFalse($provider->isAccountCreationAllowed(array()));
+
+        $this->assertTrue($this->container['configModel']->save(array('gitlab_account_creation' => '0')));
+        $this->container['memoryCache']->flush();
+        $this->assertFalse($provider->isAccountCreationAllowed(array()));
+
+        $this->assertTrue($this->container['configModel']->save(array('gitlab_account_creation' => '1')));
+        $this->container['memoryCache']->flush();
+        $this->assertTrue($provider->isAccountCreationAllowed(array()));
+    }
+
+    public function testEmailRestrictions()
+    {
+        $provider = new GitlabAuthProvider($this->container);
+
+        $this->assertTrue($this->container['configModel']->save(array('gitlab_account_creation' => '0', 'gitlab_email_domains' => 'mydomain.tld')));
+        $this->container['memoryCache']->flush();
+        $this->assertFalse($provider->isAccountCreationAllowed(array('email' => 'me@mydomain.tld')));
+
+        $this->assertTrue($this->container['configModel']->save(array('gitlab_account_creation' => '1', 'gitlab_email_domains' => 'mydomain.tld')));
+        $this->container['memoryCache']->flush();
+        $this->assertTrue($provider->isAccountCreationAllowed(array('email' => 'me@mydomain.tld')));
+        $this->assertFalse($provider->isAccountCreationAllowed(array('email' => 'me@my-other-domain.tld')));
     }
 }

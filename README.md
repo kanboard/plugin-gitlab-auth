@@ -39,19 +39,6 @@ The Gitlab authentication in Kanboard uses the [OAuth 2.0](http://oauth.net/2/) 
 
 That means you can use your Gitlab account to login on Kanboard.
 
-### How to link a Gitlab account
-
-1. Go to your user profile
-2. Click on **External accounts**
-3. Click on the link **Link my Gitlab Account**
-4. You are redirected to the **Gitlab authorization form**
-5. Authorize Kanboard by clicking on the button **Accept**
-6. Your account is now linked
-
-Now, on the login page you can be authenticated in one click with the link **Login with my Gitlab Account**.
-
-Your name and email are automatically updated from your Gitlab Account if defined.
-
 ### Installation instructions
 
 #### Setting up OAuth 2.0
@@ -61,10 +48,10 @@ Your name and email are automatically updated from your Gitlab Account if define
 
 #### Setting up Kanboard
 
+![Gitlab Auth Settings](https://cloud.githubusercontent.com/assets/323546/16753427/ea8c94e4-47b7-11e6-8e6e-d9f1bf02a6bf.png)
+
 1. The easiest way is to copy and paste the Gitlab OAuth2 credentials in the form **Settings > Integrations > Gitlab Authentication**.
 2. Or add the credentials in your custom config file
-
-![Gitlab Auth Settings](https://cloud.githubusercontent.com/assets/323546/12696079/90da18f4-c72e-11e5-856c-eda54e53b274.png)
 
 If you use the second method, use these parameters in your `config.php`:
 
@@ -78,18 +65,46 @@ define('GITLAB_CLIENT_SECRET', 'YOUR_APPLICATION_SECRET');
 
 #### Custom endpoints for self-hosted Gitlab
 
-Change these default values if you use a self-hosted instance of Gitlab:
+Change the default values if you use a self-hosted instance of Gitlab:
 
-1. Define your custom Kanboard URL in **Settings > Application settings > Application URL**
-2. Define the Gitlab custom URL in **Settings > Integrations > Gitlab Authentication**:
-    - Gitlab Authorize URL: `http://YOUR_GITLAB_HOSTNAME:CUSTOM_PORT/oauth/authorize` (example: `http://192.168.99.100:8080/oauth/authorize`)
-    - Gitlab Token URL: `http://YOUR_GITLAB_HOSTNAME:CUSTOM_PORT/oauth/token`
-    - Gitlab API URL: `http://YOUR_GITLAB_HOSTNAME:CUSTOM_PORT/api/v3/` (don't forget the trailing slash)
+- Gitlab Authorize URL: `http://YOUR_GITLAB_HOSTNAME:CUSTOM_PORT/oauth/authorize` (example: `http://192.168.99.100:8080/oauth/authorize`)
+- Gitlab Token URL: `http://YOUR_GITLAB_HOSTNAME:CUSTOM_PORT/oauth/token`
+- Gitlab API URL: `http://YOUR_GITLAB_HOSTNAME:CUSTOM_PORT/api/v3/` (don't forget the trailing slash)
+
+
+### How to link an existing Gitlab account
+
+![Gitlab Link Account](https://cloud.githubusercontent.com/assets/323546/16753479/3d65a048-47b8-11e6-9112-a53e433dd73d.png)
+
+1. Go to your user profile
+2. Click on **External accounts**
+3. Click on the link **Link my Gitlab Account**
+4. You are redirected to the **Gitlab authorization form**
+5. Authorize Kanboard by clicking on the button **Accept**
+6. Your account is now linked
+
+Now, on the login page you can be authenticated in one click with the link **Login with my Gitlab Account**.
+
+Your name and email are automatically updated from your Gitlab Account if defined.
+
+
+### How to create automatically users during the first login
+
+![Gitlab Account Creation](https://cloud.githubusercontent.com/assets/323546/16753428/ea8e4302-47b7-11e6-894b-d31b696b4357.png)
+
+1. On the settings page, check the box **Allow Account Creation**
+2. If you would like to apply a restriction based on the email domain name enter the correct value in the second field
+
+New users will have the same username as the one in Gitlab and they will be tagged as remote user.
+
+**Important Note**: If you use the public Gitlab and don't apply any domain restriction, everybody in the world will be able to sign in.
+
 
 ### Notes
 
 Kanboard uses these information from your Gitlab profile:
 
+- Username
 - Full name
 - Email address
 - Gitlab unique id
@@ -98,4 +113,5 @@ The Gitlab unique id is used to link the local user account and the Gitlab accou
 
 ### Known issues
 
-Gitlab OAuth will work only with url rewrite enabled. At the moment, Gitlab doesn't support callback url with query string parameters. See [Gitlab issue](https://gitlab.com/gitlab-org/gitlab-ce/issues/2443)
+Gitlab OAuth will work only with url rewrite enabled. 
+At the moment, Gitlab doesn't support callback url with query string parameters. See [Gitlab issue](https://gitlab.com/gitlab-org/gitlab-ce/issues/2443)

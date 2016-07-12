@@ -8,5 +8,8 @@ return array(
     'Gitlab Authentication' => 'Authentification Gitlab',
     'Help on Gitlab authentication' => 'Aide sur l\'authentification Gitlab',
     'Leave blank to use the default URL.' => 'Laissez vide pour utiliser l\'URL par défaut.',
+    'Allow Account Creation' => 'Autoriser la création de comptes',
+    'Allow account creation only for those domains' => 'Autoriser la création de compte seulement pour ces noms de domaines',
+    'Use a comma to enter multiple domains: domain1.tld, domain2.tld' => 'Utilisez une virgule pour mettre plusieurs nom de domaines : domaine1.tld, domaine2.tld',
 );
 
