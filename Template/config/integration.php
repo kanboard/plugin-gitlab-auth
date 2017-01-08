@@ -1,5 +1,5 @@
 <h3><i class="fa fa-gitlab fa-fw" aria-hidden="true"></i><?= t('Gitlab Authentication') ?></h3>
-<div class="listing">
+<div class="panel">
 
     <?= $this->form->label(t('Gitlab OAuth callback URL'), 'gitlab_oauth_url') ?>
     <input type="text" class="auto-select" readonly="readonly" value="<?= $this->url->href('OAuthController', 'handler', array('plugin' => 'GitlabAuth'), false, '', true) ?>"/>

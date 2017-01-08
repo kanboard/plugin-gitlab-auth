@@ -14,7 +14,7 @@ Author
 Requirements
 ------------
 
-- Kanboard >= 1.0.29
+- Kanboard >= 1.0.37
 - Account on [Gitlab.com](https://gitlab.com) or you own self-hosted Gitlab instance
 - Have Kanboard registered as application in Gitlab (Settings > Applications)
 - Kanboard application URL is defined properly
