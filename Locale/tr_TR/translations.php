@@ -1,11 +1,11 @@
 <?php
 
 return array(
-    'Login with my Gitlab Account' => 'Gitlab hesabımla giriş yap',
-    'Link my Gitlab Account' => 'Gitlab hesabını ilişkilendir',
-    'Unlink my Gitlab Account' => 'Gitlab hesabımla bağlantıyı kopar',
-    'Gitlab Account' => 'Gitlab hesabı',
-    'Gitlab Authentication' => 'Gitlab doğrulaması',
-    'Help on Gitlab authentication' => 'Gitlab doğrulaması hakkında yardım',
+    'Login with my GitLab Account' => 'GitLab hesabımla giriş yap',
+    'Link my GitLab Account' => 'GitLab hesabını ilişkilendir',
+    'Unlink my GitLab Account' => 'GitLab hesabımla bağlantıyı kopar',
+    'GitLab Account' => 'GitLab hesabı',
+    'GitLab Authentication' => 'GitLab doğrulaması',
+    'Help on GitLab authentication' => 'GitLab doğrulaması hakkında yardım',
 );
 

@@ -1,9 +1,9 @@
-Gitlab Authentication
+GitLab Authentication
 =====================
 
 [![Build Status](https://travis-ci.org/kanboard/plugin-gitlab-auth.svg?branch=master)](https://travis-ci.org/kanboard/plugin-gitlab-auth)
 
-Link a Gitlab account to a Kanboard user profile.
+Link a GitLab account to a Kanboard user profile.
 
 Author
 ------
@@ -15,8 +15,8 @@ Requirements
 ------------
 
 - Kanboard >= 1.0.37
-- Account on [Gitlab.com](https://gitlab.com) or you own self-hosted Gitlab instance
-- Have Kanboard registered as application in Gitlab (Settings > Applications)
+- Account on [GitLab.com](https://gitlab.com) or you own self-hosted GitLab instance
+- Have Kanboard registered as application in GitLab (**Settings > Applications**)
 - Kanboard application URL is defined properly
 
 Installation
@@ -35,83 +35,83 @@ Documentation
 
 ### How does this work?
 
-The Gitlab authentication in Kanboard uses the [OAuth 2.0](http://oauth.net/2/) protocol, so any user of Kanboard can be linked to a Gitlab account.
+The GitLab authentication in Kanboard uses the [OAuth 2.0](http://oauth.net/2/) protocol, so any user of Kanboard can be linked to a GitLab account.
 
-That means you can use your Gitlab account to login on Kanboard.
+That means you can use your GitLab account to login on Kanboard.
 
 ### Installation instructions
 
 #### Setting up OAuth 2.0
 
-- On Gitlab, register a new application by following the [official documentation](http://doc.gitlab.com/ce/integration/oauth_provider.html)
-- In Kanboard, you can get the **callback url** in **Settings > Integrations > Gitlab Authentication**, just copy and paste the url
+- On GitLab, register a new application by following the [official documentation](http://doc.gitlab.com/ce/integration/oauth_provider.html)
+- In Kanboard, you can get the **callback url** in **Settings > Integrations > GitLab Authentication**, just copy and paste the url
 
 #### Setting up Kanboard
 
-![Gitlab Auth Settings](https://cloud.githubusercontent.com/assets/323546/16753427/ea8c94e4-47b7-11e6-8e6e-d9f1bf02a6bf.png)
+![GitLab Auth Settings](https://cloud.githubusercontent.com/assets/323546/16753427/ea8c94e4-47b7-11e6-8e6e-d9f1bf02a6bf.png)
 
-1. The easiest way is to copy and paste the Gitlab OAuth2 credentials in the form **Settings > Integrations > Gitlab Authentication**.
+1. The easiest way is to copy and paste the GitLab OAuth2 credentials in the form **Settings > Integrations > GitLab Authentication**.
 2. Or add the credentials in your custom config file
 
 If you use the second method, use these parameters in your `config.php`:
 
 ```php
-// Gitlab application id
+// GitLab application id
 define('GITLAB_CLIENT_ID', 'YOUR_APPLICATION_ID');
 
-// Gitlab application secret
+// GitLab application secret
 define('GITLAB_CLIENT_SECRET', 'YOUR_APPLICATION_SECRET');
 ```
 
-#### Custom endpoints for self-hosted Gitlab
+#### Custom endpoints for self-hosted GitLab
 
-Change the default values if you use a self-hosted instance of Gitlab:
+Change the default values if you use a self-hosted instance of GitLab:
 
-- Gitlab Authorize URL: `http://YOUR_GITLAB_HOSTNAME:CUSTOM_PORT/oauth/authorize` (example: `http://192.168.99.100:8080/oauth/authorize`)
-- Gitlab Token URL: `http://YOUR_GITLAB_HOSTNAME:CUSTOM_PORT/oauth/token`
-- Gitlab API URL: `http://YOUR_GITLAB_HOSTNAME:CUSTOM_PORT/api/v3/` (don't forget the trailing slash)
+- GitLab Authorize URL: `http://YOUR_GITLAB_HOSTNAME:CUSTOM_PORT/oauth/authorize` (example: `http://192.168.99.100:8080/oauth/authorize`)
+- GitLab Token URL: `http://YOUR_GITLAB_HOSTNAME:CUSTOM_PORT/oauth/token`
+- GitLab API URL: `http://YOUR_GITLAB_HOSTNAME:CUSTOM_PORT/api/v3/` (don't forget the trailing slash)
 
 
-### How to link an existing Gitlab account
+### How to link an existing GitLab account
 
-![Gitlab Link Account](https://cloud.githubusercontent.com/assets/323546/16753479/3d65a048-47b8-11e6-9112-a53e433dd73d.png)
+![GitLab Link Account](https://cloud.githubusercontent.com/assets/323546/16753479/3d65a048-47b8-11e6-9112-a53e433dd73d.png)
 
 1. Go to your user profile
 2. Click on **External accounts**
-3. Click on the link **Link my Gitlab Account**
-4. You are redirected to the **Gitlab authorization form**
+3. Click on the link **Link my GitLab Account**
+4. You are redirected to the **GitLab authorization form**
 5. Authorize Kanboard by clicking on the button **Accept**
 6. Your account is now linked
 
-Now, on the login page you can be authenticated in one click with the link **Login with my Gitlab Account**.
+Now, on the login page you can be authenticated in one click with the link **Login with my GitLab Account**.
 
-Your name and email are automatically updated from your Gitlab Account if defined.
+Your name and email are automatically updated from your GitLab Account if defined.
 
 
 ### How to create automatically users during the first login
 
-![Gitlab Account Creation](https://cloud.githubusercontent.com/assets/323546/16753428/ea8e4302-47b7-11e6-894b-d31b696b4357.png)
+![GitLab Account Creation](https://cloud.githubusercontent.com/assets/323546/16753428/ea8e4302-47b7-11e6-894b-d31b696b4357.png)
 
 1. On the settings page, check the box **Allow Account Creation**
 2. If you would like to apply a restriction based on the email domain name enter the correct value in the second field
 
-New users will have the same username as the one in Gitlab and they will be tagged as remote user.
+New users will have the same username as the one in GitLab and they will be tagged as remote user.
 
-**Important Note**: If you use the public Gitlab and don't apply any domain restriction, everybody in the world will be able to sign in.
+**Important Note**: If you use the public GitLab and don't apply any domain restriction, everybody in the world will be able to sign in.
 
 
 ### Notes
 
-Kanboard uses these information from your Gitlab profile:
+Kanboard uses these information from your GitLab profile:
 
 - Username
 - Full name
 - Email address
-- Gitlab unique id
+- GitLab unique id
 
-The Gitlab unique id is used to link the local user account and the Gitlab account.
+The GitLab unique id is used to link the local user account and the GitLab account.
 
 ### Known issues
 
-Gitlab OAuth will work only with url rewrite enabled. 
-At the moment, Gitlab doesn't support callback url with query string parameters. See [Gitlab issue](https://gitlab.com/gitlab-org/gitlab-ce/issues/2443)
+GitLab OAuth will work only with url rewrite enabled.
+At the moment, GitLab doesn't support callback url with query string parameters. See [GitLab issue](https://gitlab.com/gitlab-org/gitlab-ce/issues/2443).
