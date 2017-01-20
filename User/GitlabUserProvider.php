@@ -5,7 +5,7 @@ namespace Kanboard\Plugin\GitlabAuth\User;
 use Kanboard\User\OAuthUserProvider;
 
 /**
- * Gitlab OAuth User Provider
+ * GitLab OAuth User Provider
  *
  * @package  user
  * @author   Frederic Guillot

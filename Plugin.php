@@ -30,12 +30,12 @@ class Plugin extends Base
 
     public function getPluginName()
     {
-        return 'Gitlab Authentication';
+        return 'GitLab Authentication';
     }
 
     public function getPluginDescription()
     {
-        return t('Use Gitlab as authentication provider');
+        return t('Use GitLab as authentication provider');
     }
 
     public function getPluginAuthor()

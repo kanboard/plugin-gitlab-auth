@@ -1,11 +1,11 @@
 <?php
 
 return array(
-    'Login with my Gitlab Account' => 'Авторизоваться через аккаунт Gitlab',
-    'Link my Gitlab Account' => 'Привязать аккаунт Gitlab',
-    'Unlink my Gitlab Account' => 'Отвязать аккаунт Gitlab',
-    'Gitlab Account' => 'Аккаунт Gitlab',
-    'Gitlab Authentication' => 'Авторизация через Gitlab',
-    'Help on Gitlab authentication' => 'Помощь а авторизации через Gitlab',
+    'Login with my GitLab Account' => 'Авторизоваться через аккаунт GitLab',
+    'Link my GitLab Account' => 'Привязать аккаунт GitLab',
+    'Unlink my GitLab Account' => 'Отвязать аккаунт GitLab',
+    'GitLab Account' => 'Аккаунт GitLab',
+    'GitLab Authentication' => 'Авторизация через GitLab',
+    'Help on GitLab authentication' => 'Помощь а авторизации через GitLab',
 );
 

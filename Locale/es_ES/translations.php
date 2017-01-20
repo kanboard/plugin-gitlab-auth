@@ -1,11 +1,11 @@
 <?php
 
 return array(
-    'Login with my Gitlab Account' => 'Ingresar usando mi Cuenta en Gitlab',
-    'Link my Gitlab Account' => 'Enlazar con mi Cuenta en Gitlab',
-    'Unlink my Gitlab Account' => 'Desenlazar con mi Cuenta en Gitlab',
-    'Gitlab Account' => 'Cuenta de Gitlab',
-    'Gitlab Authentication' => 'Autenticación Gitlab',
-    'Help on Gitlab authentication' => 'Ayuda con autenticación Gitlab',
+    'Login with my GitLab Account' => 'Ingresar usando mi Cuenta en GitLab',
+    'Link my GitLab Account' => 'Enlazar con mi Cuenta en GitLab',
+    'Unlink my GitLab Account' => 'Desenlazar con mi Cuenta en GitLab',
+    'GitLab Account' => 'Cuenta de GitLab',
+    'GitLab Authentication' => 'Autenticación GitLab',
+    'Help on GitLab authentication' => 'Ayuda con autenticación GitLab',
 );
 

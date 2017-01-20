@@ -1,12 +1,12 @@
 <?php
 
 return array(
-    'Login with my Gitlab Account' => 'Se connecter avec mon compte Gitlab',
-    'Link my Gitlab Account' => 'Lier mon compte Gitlab',
-    'Unlink my Gitlab Account' => 'Ne plus utiliser mon compte Gitlab',
-    'Gitlab Account' => 'Compte Gitlab',
-    'Gitlab Authentication' => 'Authentification Gitlab',
-    'Help on Gitlab authentication' => 'Aide sur l\'authentification Gitlab',
+    'Login with my GitLab Account' => 'Se connecter avec mon compte GitLab',
+    'Link my GitLab Account' => 'Lier mon compte GitLab',
+    'Unlink my GitLab Account' => 'Ne plus utiliser mon compte GitLab',
+    'GitLab Account' => 'Compte GitLab',
+    'GitLab Authentication' => 'Authentification GitLab',
+    'Help on GitLab authentication' => 'Aide sur l\'authentification GitLab',
     'Leave blank to use the default URL.' => 'Laissez vide pour utiliser l\'URL par défaut.',
     'Allow Account Creation' => 'Autoriser la création de comptes',
     'Allow account creation only for those domains' => 'Autoriser la création de compte seulement pour ces noms de domaines',
