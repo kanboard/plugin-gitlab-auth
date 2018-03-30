@@ -1,16 +1,16 @@
 language: php
 sudo: false
+notifications:
+  email: false
 
 php:
   - 7.0
   - 5.6
-  - 5.5
-  - 5.4
 
 env:
   global:
     - PLUGIN=GitlabAuth
-    - KANBOARD_REPO=https://github.com/fguillot/kanboard.git
+    - KANBOARD_REPO=https://github.com/kanboard/kanboard.git
   matrix:
     - DB=sqlite
     - DB=mysql
