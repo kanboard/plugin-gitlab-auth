@@ -27,7 +27,7 @@
     <?= $this->form->text('gitlab_email_domains', $values) ?>
     <p class="form-help"><?= t('Use a comma to enter multiple domains: domain1.tld, domain2.tld') ?></p>
 
-    <p class="form-help"><a href="https://kanboard.net/plugin/gitlab-auth"><?= t('Help on GitLab authentication') ?></a></p>
+    <p class="form-help"><a href="https://github.com/kanboard/plugin-gitlab-auth#documentation"><?= t('Help on GitLab authentication') ?></a></p>
 
     <div class="form-actions">
         <input type="submit" value="<?= t('Save') ?>" class="btn btn-blue"/>
