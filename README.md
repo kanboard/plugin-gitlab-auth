@@ -1,8 +1,6 @@
 GitLab Authentication
 =====================
 
-[![Build Status](https://travis-ci.org/kanboard/plugin-gitlab-auth.svg?branch=master)](https://travis-ci.org/kanboard/plugin-gitlab-auth)
-
 Link a GitLab account to a Kanboard user profile.
 
 Author
